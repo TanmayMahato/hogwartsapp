@@ -2,9 +2,9 @@ version: '2'
 
 services:
 
-  Nginx:
+  nginx:
     
-    build: ./Nginx
+    build: ./nginx
     depends_on:
       - Backend1
       - Backend2
@@ -14,25 +14,25 @@ services:
     ports:
       -"80:80"
 
-  Backend1:
+  backend1:
 
-    build: ./Backend1
+    build: ./backend1
     environment:
       - PORT=8001  
     
 
-  Backend2:
-    build: ./Backend2
+  backend2:
+    build: ./backend2
     environment:
       - PORT=8002  
 
-  Backend3:
-    build: ./Backend3
+  backend3:
+    build: ./backend3
     environment:
       - PORT=8003   
 
-  Backend4:
-    build: ./Backend4
+  backend4:
+    build: ./backend4
     environment:
       - PORT=8004   
 

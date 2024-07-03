@@ -1,18 +1,17 @@
 
-
 FROM golang:latest
 
 
 RUN mkdir app
 
-COPY . /backend1/
+COPY . /backend4/
 
 
-WORKDIR /backend1/
+WORKDIR /backend4/
 
 RUN go build -o main .
 
-EXPOSE 8002
+EXPOSE 8004
 
 
 CMD [ "/backend1/main" ]
