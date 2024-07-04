@@ -1,17 +1,16 @@
-
-FROM golang:alpine
-
-
-WORKDIR /backend3
+FROM golang:1.22.5-alpine
 
 
-COPY go.mod ./
+WORKDIR /backend1
+
+
+COPY . ./
 RUN go mod download
 
-COPY *.go ./
+COPY . .
 
-RUN go build -o /bcd3
+RUN go build -o main server.go
 
 EXPOSE 8003
 
-CMD [ "/bcd3" ]
+CMD [ "./main" ]

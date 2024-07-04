@@ -1,18 +1,16 @@
+FROM golang:1.22.5-alpine
 
 
-FROM golang:latest
+WORKDIR /backend1
 
 
-RUN mkdir app
+COPY . ./
+RUN go mod download
 
-COPY . /backend2/
+COPY . .
 
-
-WORKDIR /backend2/
-
-RUN go build -o main .
+RUN go build -o main server.go
 
 EXPOSE 8002
 
-
-CMD [ "/backend1/main" ]
+CMD [ "./main" ]

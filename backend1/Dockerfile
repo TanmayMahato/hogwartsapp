@@ -1,17 +1,17 @@
 
 #Base Golang Image
-FROM golang:alpine
+FROM golang:1.22.5-alpine
 
 
 WORKDIR /backend1
 
 
-COPY go.* ./
+COPY . ./
 RUN go mod download
 
 COPY . .
 
-RUN go build -o main main.go
+RUN go build -o main server.go
 
 EXPOSE 8001
 

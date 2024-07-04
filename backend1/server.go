@@ -1,28 +1,20 @@
 package main
 
 import (
-	"html/template"
-
 	"log"
 	"net/http"
+	"net/http/httputil"
+	"net/url"
 )
-
-type Server struct {
-	ServerName string
-}
 
 func main() {
 
-	handler1 := func(w http.ResponseWriter, r *http.Request) {
+	f := "http://localhost:5001"
+	targetURL, _ := url.Parse(f)
 
-		tmpl := template.Must(template.ParseFiles("Frontend/index.html"))
-		//name := Server{ServerName: "server1"}
+	proxy := httputil.NewSingleHostReverseProxy(targetURL)
 
-		tmpl.Execute(w, nil)
-
-	}
-
-	http.HandleFunc("/", handler1)
+	http.Handle("/", proxy)
 
 	log.Fatal(http.ListenAndServe(":8001", nil))
 }
