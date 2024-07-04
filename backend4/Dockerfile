@@ -1,17 +1,16 @@
-
-FROM golang:latest
-
-
-RUN mkdir app
-
-COPY . /backend4/
+FROM golang:alpine
 
 
-WORKDIR /backend4/
+WORKDIR /backend4
 
-RUN go build -o main .
+
+COPY go.mod ./
+RUN go mod download
+
+COPY *.go ./
+
+RUN go build -o /bcd4
 
 EXPOSE 8004
 
-
-CMD [ "/backend1/main" ]
+CMD [ "/bcd4" ]
