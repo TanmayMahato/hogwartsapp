@@ -6,15 +6,15 @@ FROM golang:alpine
 WORKDIR /backend1
 
 
-COPY go.mod ./
+COPY go.* ./
 RUN go mod download
 
-COPY *.go ./
+COPY . .
 
-RUN go build -o /bcd1
+RUN go build -o main main.go
 
 EXPOSE 8001
 
-CMD [ "/bcd1" ]
+CMD [ "./main" ]
 
 
