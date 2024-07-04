@@ -1,17 +1,17 @@
 
-FROM golang:latest
+FROM golang:alpine
 
 
-RUN mkdir app
-
-COPY . /backend3/
+WORKDIR /backend3
 
 
-WORKDIR /backend3/
+COPY go.mod ./
+RUN go mod download
 
-RUN go build -o main .
+COPY *.go ./
+
+RUN go build -o /bcd3
 
 EXPOSE 8003
 
-
-CMD [ "/backend1/main" ]
+CMD [ "/bcd3" ]

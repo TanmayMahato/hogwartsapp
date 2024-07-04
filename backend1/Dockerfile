@@ -1,22 +1,20 @@
 
 #Base Golang Image
-FROM golang:latest
+FROM golang:alpine
 
 
-
-RUN mkdir app
-
-COPY . /backend1/
+WORKDIR /backend1
 
 
+COPY go.mod ./
+RUN go mod download
 
-WORKDIR /backend1/
+COPY *.go ./
 
-RUN go build -o main .
-
+RUN go build -o /bcd1
 
 EXPOSE 8001
 
+CMD [ "/bcd1" ]
 
 
-CMD [ "/backend1/main" ]
