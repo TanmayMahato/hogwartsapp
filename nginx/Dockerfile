@@ -1,4 +1,7 @@
-FROM nginx:alpine
-COPY nginx.conf /etx/nginx/conf.d/
+FROM  ubuntu/nginx
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+COPY default.conf  /etc/nginx/conf.d/
+RUN rm -r /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/
+CMD ["nginx", "-g", "daemon off;"] 
