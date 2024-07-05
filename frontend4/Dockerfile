@@ -1,10 +1,3 @@
 FROM nginx:alpine
-
-
-COPY index.html /usr/share/nginx/html/
-
-
-EXPOSE 5004
-
-
-CMD ["nginx", "-g", "daemon off;"]
+RUN rm -r /usr/share/nginx/html
+COPY . /usr/share/nginx/html

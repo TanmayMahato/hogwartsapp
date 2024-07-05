@@ -1,72 +1,48 @@
-version: '3'
-
-services:
-
+services: 
   nginx:
+    container_name: nginx
     
     build: ./nginx
     depends_on:
-      - frontend1
+      - f1
       - frontend2
       - frontend3
       - frontend4      
-      - backend1
-      - backend2
-      - backend3
-      - backend4
 
     ports:
       - "80:80"
-
-  frontend1:
-    build: ./frontend1
-
-    ports:
-      - "5001:5001"
-
+    
+       
+    
+    
 
   frontend2:
     build: ./frontend2
-
+    container_name: frontend2
     ports:
-      - "5002:5002"
+      - "5002:80"
+
 
   frontend3:
     build: ./frontend3
-
+    container_name: frontend3
+  
     ports:
-      - "5003:5003"
+      - "5003:80"
 
   frontend4:
     build: ./frontend4
-
     ports:
-      - "5004:5004"
+      - "5004:80"    
+    container_name: frontend4    
 
+  f1:
+    build: ./f1
+    container_name: f1
 
-  backend1:
-
-    build: ./backend1
-     
-           
-    
-
-  backend2:
-    build: ./backend2
-    
+    ports: 
+      - "5008:80"
         
-
-  backend3:
-    build: ./backend3
-    
-            
-
-  backend4:
-    build: ./backend4
-    
-    
-
-
   
 
   
