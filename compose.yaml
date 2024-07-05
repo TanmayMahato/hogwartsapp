@@ -1,20 +1,4 @@
 services: 
-  nginx:
-    container_name: nginx
-    
-    build: ./nginx
-    depends_on:
-      - f1
-      - frontend2
-      - frontend3
-      - frontend4      
-
-    ports:
-      - "80:80"
-    
-       
-    
-    
 
   frontend2:
     build: ./frontend2
